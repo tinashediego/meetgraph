@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meetgraph"
+version = "0.1.0"
+description = "GraphRAG over meeting transcripts with Neo4j, LangChain, Claude and an MCP server"
+requires-python = ">=3.11"
+dependencies = [
+  "anthropic",
+  "neo4j",
+  "langchain-core",
+  "langchain-neo4j",
+  "langchain-text-splitters",
+  "fastembed",
+  "mcp[cli]>=2",
+  "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+meetgraph = "meetgraph.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

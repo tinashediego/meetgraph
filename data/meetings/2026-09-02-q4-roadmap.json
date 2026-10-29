@@ -1,0 +1,17 @@
+{
+  "id": "2026-09-02-q4-roadmap",
+  "title": "Q4 Roadmap Planning",
+  "date": "2026-09-02",
+  "attendees": ["Ava Chen", "Marcus Bell", "Priya Nair", "Diego Alvarez"],
+  "topics": ["Q4 roadmap", "Offline mode", "Search", "Hiring"],
+  "decisions": [
+    "Offline mode is the top Q4 priority for the mobile app",
+    "Semantic search moves to Q1 next year"
+  ],
+  "action_items": [
+    {"owner": "Priya Nair", "task": "Write the offline mode technical design doc", "due": "2026-09-12"},
+    {"owner": "Marcus Bell", "task": "Estimate backend sync API changes for offline mode", "due": "2026-09-09"},
+    {"owner": "Ava Chen", "task": "Open two backend engineer requisitions", "due": "2026-09-16"}
+  ],
+  "transcript": "Ava Chen: Let's lock the Q4 roadmap today. We have three candidates: offline mode, semantic search and the new onboarding flow.\nMarcus Bell: Offline mode is the most requested feature in support tickets. About a third of churned users mention unreliable connectivity.\nPriya Nair: Offline mode is also the riskiest. We need conflict resolution for edits made on two devices, and the sync API was never designed for that.\nDiego Alvarez: From the design side, onboarding is mostly done. We could ship it with one engineer in the background.\nAva Chen: Then offline mode is the top Q4 priority. Semantic search slides to Q1 next year. Any objections?\nMarcus Bell: None, but I need a week to estimate the backend sync changes before we commit to dates.\nPriya Nair: I'll write the technical design doc for offline mode, covering local storage, the sync protocol and conflict resolution.\nAva Chen: Good. I'll open two backend requisitions, because sync work will stretch the team.\nDiego Alvarez: I'll keep onboarding moving and share final mocks next week."
+}

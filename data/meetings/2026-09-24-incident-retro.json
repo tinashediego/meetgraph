@@ -1,0 +1,17 @@
+{
+  "id": "2026-09-24-incident-retro",
+  "title": "Login Outage Retrospective",
+  "date": "2026-09-24",
+  "attendees": ["Marcus Bell", "Sam Okafor", "Lena Fischer"],
+  "topics": ["Incident", "Authentication", "OAuth2", "Monitoring"],
+  "decisions": [
+    "Add an alert when token refresh errors exceed 2% for five minutes",
+    "Rotate signing keys with a 24-hour overlap window"
+  ],
+  "action_items": [
+    {"owner": "Lena Fischer", "task": "Create the token refresh error-rate alert", "due": "2026-09-26"},
+    {"owner": "Marcus Bell", "task": "Change key rotation to keep the old signing key valid for 24 hours", "due": "2026-10-03"},
+    {"owner": "Sam Okafor", "task": "Write the public incident summary", "due": "2026-09-25"}
+  ],
+  "transcript": "Lena Fischer: On Monday, logins failed for 47 minutes. The OAuth2 signing key rotated, and mobile clients holding tokens signed by the old key could not refresh.\nMarcus Bell: Rotation removed the old key immediately. We should keep the old key valid for an overlap window, say 24 hours.\nSam Okafor: We also found out from customers, not from monitoring. Token refresh errors jumped to 30% and nothing paged.\nLena Fischer: I'll add an alert when the refresh error rate stays above 2% for five minutes.\nMarcus Bell: I'll change the rotation job to keep the previous key for 24 hours.\nSam Okafor: I'll write the public incident summary today. Customers asked for it."
+}

@@ -1,0 +1,17 @@
+{
+  "id": "2026-10-06-offline-checkpoint",
+  "title": "Offline Mode Checkpoint",
+  "date": "2026-10-06",
+  "attendees": ["Ava Chen", "Priya Nair", "Sam Okafor", "Marcus Bell"],
+  "topics": ["Offline mode", "SQLite", "Sync API", "Beta launch"],
+  "decisions": [
+    "Run a closed beta of offline mode with 200 users starting November 3",
+    "Defer attachments in offline mode to a later release"
+  ],
+  "action_items": [
+    {"owner": "Ava Chen", "task": "Recruit 200 beta users from the support ticket list", "due": "2026-10-24"},
+    {"owner": "Sam Okafor", "task": "Add sync telemetry for conflict counts and sync latency", "due": "2026-10-20"},
+    {"owner": "Priya Nair", "task": "Write the beta test plan", "due": "2026-10-15"}
+  ],
+  "transcript": "Ava Chen: Where are we on offline mode?\nSam Okafor: The SQLite layer works, with encryption at rest. Reads are fast. The open problem is attachments: photos make the local database huge.\nMarcus Bell: The version field is live in the sync API. Stale writes are rejected and logged to the audit table.\nPriya Nair: I'd cut attachments from the first release. Text fields cover most of what users asked for.\nAva Chen: Agreed, attachments are deferred. Can we get real users on it soon?\nPriya Nair: A closed beta starting November 3 with 200 users is realistic. I'll write the test plan.\nAva Chen: I'll recruit beta users from the support ticket list, starting with the people who complained about connectivity.\nSam Okafor: Before the beta I'll add telemetry for conflict counts and sync latency, so we can tell whether last-writer-wins is causing problems."
+}

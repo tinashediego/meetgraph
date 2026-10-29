@@ -1,0 +1,17 @@
+{
+  "id": "2026-09-10-offline-design-review",
+  "title": "Offline Mode Design Review",
+  "date": "2026-09-10",
+  "attendees": ["Priya Nair", "Marcus Bell", "Sam Okafor"],
+  "topics": ["Offline mode", "Conflict resolution", "Sync API", "SQLite"],
+  "decisions": [
+    "Use last-writer-wins per field with a server-side audit log for conflicts",
+    "Store offline data in SQLite on device, encrypted at rest"
+  ],
+  "action_items": [
+    {"owner": "Sam Okafor", "task": "Prototype the SQLite storage layer with encryption", "due": "2026-09-24"},
+    {"owner": "Marcus Bell", "task": "Add a version field to every record in the sync API", "due": "2026-09-30"},
+    {"owner": "Priya Nair", "task": "Update the design doc with the conflict resolution decision", "due": "2026-09-15"}
+  ],
+  "transcript": "Priya Nair: The main open question in the design doc is conflict resolution. Option one is last-writer-wins for the whole record. Option two is per-field merging. Option three is CRDTs.\nSam Okafor: CRDTs are elegant but heavy. Our records are mostly flat forms, so per-field last-writer-wins covers nearly every real conflict.\nMarcus Bell: If we go per field, the sync API needs a version on every record so the server can detect stale writes. That's about two weeks of backend work.\nPriya Nair: We also need an audit trail so support can explain to a customer why a value changed.\nMarcus Bell: A server-side audit log of overwritten values is cheap. Let's do that.\nSam Okafor: For on-device storage I'd use SQLite, encrypted at rest. I can prototype it in two weeks.\nPriya Nair: Agreed: per-field last-writer-wins, an audit log on the server, SQLite on device. I'll update the doc."
+}
